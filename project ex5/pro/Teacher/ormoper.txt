@@ -1,0 +1,37 @@
+ORM Queries:
+
+CRUD
+
+1.create 
+   
+    modelname.objects.create(field1=val1,field2=val2...)
+    StudentModel.objects.create(first_name="anu",last_name="sree",age=22,address="calicut,kerala",phone=23456789,email="anu.sri@gmil.com")
+
+2.Retrievel
+   
+      -all() -complete queryset objects from a modelname
+      -get() -complete single query set object based on given condition
+      -filter() -
+
+
+   __gt= >
+   __gte= >=
+   __lt =  <
+   __lte=  <= 
+
+
+3.update
+
+    obj=StudentModel.objects.get(id=2)
+    obj.last="KC"
+    obj.age=21
+    obj.save()
+
+    OR
+
+    StudentModel.objects.filter(id=2).update(last="k",age=21)  
+    
+    4.Delete
+
+      obj.StudentModel.objects.get(id=2)
+      obj.delete()    

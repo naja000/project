@@ -1,0 +1,35 @@
+    <h1 class="bg-success text-center">Hello</h1>
+    {% extends 'navbar.html' %}  
+    {% block nav %}
+    {% if messages %}
+
+      {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{i}}
+      </div>
+      {%endif%}
+    
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.FAILED %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{i}} 
+    </div>
+     {%endif%}
+    {%endfor%}
+  {%endif%} 
+  <h3>{{user.first_name}} {{user.last_name}}</h3>
+
+    <!--<h1 class="bg-success text-center">Hii Anu</h1>
+      <a href="{% url 'reg' %}">REGISTRATION</a><br>
+      <a href="{% url 'log' %}">LOGIN</a><br>
+      <a href="{% url 'mark' %}">ADD MARK</a><br>
+      <a href="{% url 'addstudent' %}">ADD STUDENT</a><br>-->  
+    {% endblock nav %}
+
+    
+      
+      
+      
+    

@@ -1,0 +1,56 @@
+{% extends 'navbar.html' %}  
+{% block nav %}
+<h1 class="bg-info text-light">VIEW STUDENT</h1>    
+    
+    {% if messages %}
+      {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{i}}
+      </div>
+      {%endif%}
+    
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{i}} 
+    </div>
+     {%endif%}
+    {%endfor%}
+  {%endif%}
+    <table class="table table-bordered">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>phone</th>
+        <th>Student-Image</th>
+        <th></th>
+      </tr>
+      {% for i in data %}
+      <tr>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.address}}</td>
+        <td>{{i.phone}}</td>
+        <td>
+          {% if i.image %}
+          <img src="{{i.image.url}}" alt="img" height="100px" width="100px">
+          {%endif%}
+        </td>
+        <td>
+          <a href="{% url 'editstu' i.id  %}" class="btn btn-warning mr-3">Edit</a>
+
+          <a href="{% url 'delstu' i.id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
+
+
+  {% endblock nav %}

@@ -1,0 +1,96 @@
+{% extends 'navbar.html' %} 
+{% block nav %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <h1>Add student</h1>
+    {% if messages %}
+      {% for i in messages %}
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{i}}
+      </div>
+      {%endif%}
+    
+      {% if i.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{i}} 
+    </div>
+     {%endif%}
+    {%endfor%}
+  {%endif%}
+
+
+<div id="formc" class="container jumbotron">
+   <form method="post" action="" enctype="multipart/form-data">
+     {% csrf_token %}
+
+  <div class="row">
+      <div class="col">
+
+        <div class="card" style="width:400px">
+          <img class="card-img-top" src="{% static 'images/icon.png '%}" alt="Card image">
+          <div class="card-body">
+            <div class="fieldWrapper">
+              {{form.image.error}}
+              <label for="{{form.image.id_for_label}}">Image</label>
+              {{form.image}}
+           
+          </div>
+        </div>
+     
+       </div>
+      </div> 
+
+
+      <div class="col">
+      <div class="fieldWrapper">
+        {{form.first_name.error}}
+        <label for="{{form.first_name.id_for_label}}">First Name</label>
+        {{form.first_name}}
+      </div>
+      <div class="fieldWrapper">
+        {{form.last_name.error}}
+        <label for="{{form.last_name.id_for_label}}">Last Name</label>
+        {{form.last_name}}
+      </div>
+      <div class="fieldWrapper">
+        {{form.age.error}}
+        <label for="{{form.age.id_for_label}}">Age</label>
+        {{form.age}}
+      </div>
+      <div class="fieldWrapper">
+        {{form.address.error}}
+        <label for="{{form.address.id_for_label}}">Address</label>
+        {{form.address}}
+       </div>
+      </div> 
+
+      <div class="col">
+
+      <div class="fieldWrapper">
+        {{form.phone.error}}
+        <label for="{{form.phone.id_for_label}}">Phone No</label>
+        {{form.phone}}
+      </div>
+      <div class="fieldWrapper">
+        {{form.email.error}}
+        <label for="{{form.email.id_for_label}}">Email id</label>
+        {{form.email}}
+       </div> 
+      </div>
+    </div>
+
+
+    
+    <div class="text-center mt-5"> 
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div> 
+  </form>
+</div>    
+{% endblock nav %}
+
+  
+      
+ 
